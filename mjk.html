@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kelompok 4</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      color: #003366;
+    }
+
+    header {
+      background-color: #0059b3;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 85, 170, 0.25);
+      padding: 25px 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 85, 170, 0.4);
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 1.4em;
+      color: #004080;
+      text-decoration: underline;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .card h2:hover {
+      color: #003366;
+    }
+
+    .info-box {
+      margin-top: 15px;
+      background: #cce0ff;
+      border-left: 5px solid #0059b3;
+      color: #003366;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95em;
+      box-shadow: 0 4px 8px rgba(0, 85, 170, 0.1);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    .info-box.active {
+      opacity: 1;
+      max-height: 100px; /* cukup untuk teks */
+    }
+  </style>
+</head>
+<body>
+  <header>Kelompok 4</header>
+
+  <div class="container">
+    <div class="card">
+      <h2 onclick="toggleInfo(this)">Nama 1</h2>
+      <p>Desainer UI/UX</p>
+      <div class="info-box">
+        Nama Lengkap: Nama 1<br />
+        NBI: NBI001
+      </div>
+    </div>
+    <div class="card">
+      <h2 onclick="toggleInfo(this)">Nama 2</h2>
+      <p>Front-End Developer</p>
+      <div class="info-box">
+        Nama Lengkap: Nama 2<br />
+        NBI: NBI002
+      </div>
+    </div>
+    <div class="card">
+      <h2 onclick="toggleInfo(this)">Nama 3</h2>
+      <p>Back-End Developer</p>
+      <div class="info-box">
+        Nama Lengkap: Nama 3<br />
+        NBI: NBI003
+      </div>
+    </div>
+    <div class="card">
+      <h2 onclick="toggleInfo(this)">Nama 4</h2>
+      <p>Project Manager</p>
+      <div class="info-box">
+        Nama Lengkap: Nama 4<br />
+        NBI: NBI004
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleInfo(element) {
+      const card = element.parentElement;
+      const infoBox = card.querySelector('.info-box');
+
+      // Jika infoBox sudah aktif, sembunyikan
+      const isActive = infoBox.classList.contains('active');
+
+      // Tutup semua info-box lain dulu
+      document.querySelectorAll('.info-box.active').forEach(box => {
+        box.classList.remove('active');
+      });
+
+      // Jika sebelumnya tidak aktif, aktifkan info ini
+      if (!isActive) {
+        infoBox.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
